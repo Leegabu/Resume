@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav {
+            background-color: gray;
+            padding: 20px;
+            width: 250px; 
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 100; 
+            box-sizing: border-box;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        nav img {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 5px;
+        }
+
+        #main {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px); 
+            box-sizing: border-box; 
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        header img {
+             width: 200px; 
+             height: 200px; 
+             object-fit: cover; 
+             border: 5px solid #4caf50; 
+             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+             margin-bottom: 20px; 
+        } 
+
+        h1, h2, h3, h4 {
+            color: #fff;
+        }
+
+        hr {
+            border: 1px solid #fff;
+        }
+
+        .skills, .projects, .contact {
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e6e6e6;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px; 
+            margin: auto; 
+        }
+
+        input, textarea {
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 8px; 
+            background-color: #333;
+            color: #fff; 
+            font-size: 1rem; 
+            transition: all 0.3s ease; 
+        }
+        input::placeholder, textarea::placeholder {
+            color: #aaa;
+            font-style: italic; 
+        }
+        h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px; 
+}
+
+h3 {
+    font-size: 2rem; 
+    margin-top: 20px;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6; 
+    margin-bottom: 20px;
+}
+        input:focus, textarea:focus {
+            border-color: #4caf50; 
+            background-color: #444; 
+            outline: none; 
+        }
+        textarea {
+            resize: vertical; 
+            min-height: 100px; 
+        }
+
+        .price {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .price ul {
+            list-style-type: none;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 5px;
+            width: 45%; 
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .price h2 {
+            color: #fff;
+            margin: 10px 0;
+        }
+
+        .price button {
+            width: 100%;
+        }
+
+        .skill-stats {
+            margin: 10px 0;
+        }
+
+        .contact, .projects, .price {
+            padding-left: 20px;
+        }
+
+        #main {
+            min-height: 100vh; 
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #444;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 20px;
+            border-radius: 5px;
+            text-align: center;
+            color: #fff;
+            line-height: 20px; 
+        }
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #222;
+        }
+
+        .skills-table th, .skills-table td {
+            border: 1px solid #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .skills-table th {
+            background-color: #444;
+        }
+        label {
+            display: block;
+            text-align: center; 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            margin: 20px auto; 
+            width: fit-content; 
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #222;
+        }
+
+        .price-table th, .price-table td {
+            border: 1px solid #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .price-table th {
+            background-color: #444;
+        }
+        header img {
+            width: 750px; 
+            height: auto;
+        }
+        .skills {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin: 20px 0;
+            gap: 20px; 
+        }
+
+        .skill-stats {
+            background-color: #333; 
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            width: 20%; 
+        }
+
+        .skill-stats span {
+            font-size: 2rem; 
+            font-weight: bold;
+            color: #4caf50; 
+        }
+
+        .skill-stats p {
+            color: #fff; 
+            font-size: 1rem; 
+        }
+        .projects h2 {
+            font-size: 2.5rem; 
+        }
+
+        .projects h4 {
+            font-size: 2rem; 
+            margin-top: 20px;
+        }
+
+        .projects p {
+            font-size: 1.2rem; 
+            line-height: 1.6; 
+            margin-bottom: 20px; 
+        }
+        form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+input, textarea {
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+}
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px; 
+    font-size: 1rem;
+    margin-top: 40px; 
+}
+
+footer p {
+    margin: 0;
+    font-family: 'Arial', sans-serif; 
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button img {
+    margin-right: 8px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            #main {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .skills {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skill-stats {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            header img {
+                width: 100%;
+            }
+
+            form {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#home">
+            <img src="https://img.icons8.com/?size=50&id=2797&format=png" alt="Home Icon"/>
+            <p>Home</p>
+        </a>
+        <a href="#about">
+            <img src="https://img.icons8.com/?size=80&id=ywULFSPkh4kI&format=png" alt="About Icon"/>
+            <p>About</p>
+        </a>
+        <a href="#projects">
+            <img src="https://img.icons8.com/?size=50&id=53428&format=png" alt="Projects Icon"/>
+            <p>Projects</p>
+        </a>
+        <a href="#contact">
+            <img src="https://img.icons8.com/?size=50&id=53435&format=png" alt="Contact Icon"/>
+            <p>Contact</p>
+        </a>
+    </nav>
+    <div id="main">
+        <header id="home">
+            <h1>I'm Lee Irungu</h1>
+            <p>Software Engineer & IT Specialist</p>
+            <img src="profilepicture.jpeg" alt="Profile Picture" />
+        </header>
+        <div id="about">
+            <h2>About Me</h2>
+            <hr>
+            <p>Lee Irungu is a motivated and enthusiastic software engineer based in Membley, Kiambu, with a solid foundation in programming and software development. Born on July 21, 2005, Lee graduated from Moringa School on November 29, 2023, after completing an intensive Software Engineering Boot Camp. He is currently pursuing a degree in Business Information Technology (BBIT) at KCA University. Proficient in programming languages such as Python and JavaScript, and experienced with frameworks like React and Node.js, Lee has successfully developed projects like Eventify, a web application for event management, and a presentation application called Slide App. With strong problem-solving abilities, effective communication skills, and a passion for technology and coding challenges, Lee is eager to apply his skills in an entry-level position while continuing to learn and grow in a dynamic environment. Outside of technology, Lee enjoys sports, particularly basketball, which has further developed his teamwork and leadership skills.</p>
+            <h3>My Skills</h3>
+            <table class="skills-table">
+                <tr>
+                    <th>Skill</th>
+                </tr>
+                <tr>
+                    <td>Web Design</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 95%; background-color: #4caf50;">95%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Programming</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 90%; background-color: #4caf50;">90%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Database Management</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 85%; background-color: #4caf50;">85%</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="skills">
+                <div class="skill-stats">
+                    <p>Projects</p>
+                    <span>160+</span>
+                </div>
+                <div class="skill-stats">
+                    <p>Partners</p>
+                    <span>6+</span>
+                </div>
+                <div class="skill-stats">
+                    <p>Collaborations</p>
+                    <span>5+</span>
+                </div>
+                <div class="skill-stats">
+                    <p>Meetings</p>
+                    <span>160+</span>
+                </div>
+            </div>
+            <button id="downloadButton">Download Resume</button>
+
+            <script>
+                document.getElementById("downloadButton").addEventListener("click", function() {
+                    const link = document.createElement("a");
+                    link.href = "resume.docx";
+                    link.download = "resume.docx"; 
+                    link.click();
+                });
+            </script>
+        </div>
+        <div class="projects" id="projects">
+            <h2>My Projects</h2>
+            <hr>
+            <h4>Eventify</h4>
+            <p>Eventify is a versatile event management application designed to cater to both event organizers and attendees. For organizers, the app provides a comprehensive suite of tools to create and manage events, from small gatherings to large-scale conferences. Users can easily set up event pages, customize ticketing options, and track sales in real-time, ensuring a smooth planning process. For attendees, Eventify offers a user-friendly interface to discover upcoming events, purchase tickets, and receive updates about their favorite activities. The app enhances the event experience by allowing attendees to connect with other participants, access event details, and provide feedback. With its dual functionality, Eventify streamlines the entire event lifecycle, making it an essential tool for anyone involved in event planning or participation.</p>
+            <h4>Slide</h4>
+            <p>The Slide App is a dynamic social media platform that allows users to create, share, and discover visually engaging content, much like Instagram. Designed for users who love to express themselves through images and videos, the app offers a seamless interface for uploading and editing multimedia posts. Users can follow friends, explore trending content, and interact through likes, comments, and shares, fostering a vibrant community of creators. With features such as customizable profiles, story sharing, and direct messaging, the Slide App not only enhances personal expression but also encourages social interaction and collaboration among users. Its focus on visual storytelling makes it an ideal platform for influencers, artists, and anyone looking to showcase their creativity in a visually appealing way.</p>
+            <h4>Football DBMS</h4>
+            <p>The Phase 3 Project is a robust Football Database Management System (DBMS) designed to efficiently store, manage, and analyze data related to football teams, players, matches, and statistics. This project aims to provide a comprehensive platform for football enthusiasts, coaches, and analysts to access vital information and insights about the sport. The DBMS features a user-friendly interface that allows users to easily input and retrieve data, generate reports, and track player performance over time. Key functionalities include the ability to manage team rosters, record match results, and analyze player statistics, all of which contribute to informed decision-making in coaching and team management. By leveraging advanced database technologies, the Phase 3 Project not only enhances data accessibility but also supports the growing need for analytics in the world of football, making it an invaluable resource for anyone involved in the sport.</p>
+        </div>
+        <div class="contact" id="contact">
+            <h2>Contact</h2>
+            <hr>
+            <p>If you'd like to get in touch, feel free to reach out to me via:</p>
+    <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 10px;">
+            <strong>Email:</strong> 
+            <a href="mailto:leeirungu11313@gmail.com" style="color: #4caf50; text-decoration: none; font-weight: bold;">leeirungu11313@gmail.com</a>
+        </li>
+        <li style="margin-bottom: 10px;">
+            <strong>Instagram:</strong> 
+            <a href="https://www.instagram.com/_.blindbandit/" target="_blank" style="color: #4caf50; text-decoration: none; font-weight: bold;">@Bl.indbandit</a>
+        </li>
+        <li style="margin-bottom: 10px;">
+            <strong>Phone:</strong> 
+            <a href="tel:+254115710468" style="color: #4caf50; text-decoration: none; font-weight: bold;">+254 115 710 468</a>
+        </li>
+        <li style="margin-bottom: 10px;">
+            <strong>LinkedIn:</strong> 
+            <a href="https://www.linkedin.com/in/lee-irungu-26b0372aa/" target="_blank" style="color: #4caf50; text-decoration: none; font-weight: bold;">LinkedIn Profile</a>
+        </li>
+    </ul>
+            <form>
+                <label>Contact me</label>
+                <input type="text" placeholder="Your Name">
+                <input type="email" placeholder="Your Email">
+                <textarea placeholder="Your Message"></textarea>
+                <button type="submit"><img src="https://img.icons8.com/?size=64&id=gaBzN6YXx4ki&format=png" alt="Contact Icon"/>Send Message</button>
+            </form>
+        </div>
+        <footer>
+            <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
